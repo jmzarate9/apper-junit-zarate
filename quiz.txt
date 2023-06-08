@@ -1,0 +1,10 @@
+1. Unit Test - evaluating individual components through unit tests.
+2. Integration Test - verifying the functionality of interconnected components when combined.
+3. System Test - ensuring that the system meets the specified requirements.
+4. Acceptance - performed by users, customers, or stakeholders to determine if the system is acceptable.
+5. False
+6. Jupiter
+7. assertEquals - used to assert that two values are equal. It compares the expected value with the actual value.
+8. assertNotNull - used to assert that a given object reference is not null.
+9. assertArrayEquals - used to assert that two arrays are equal. It compares the expected array with the actual array.
+10. assertAll - used to assert multiple assertions at once. It allows you to group multiple assertions together and ensures that all of them pass.
