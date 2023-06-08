@@ -19,37 +19,43 @@ public class AccountRepository {
 
     public Account getAccount(String id) {
 
-//        accounts
-//                .stream()
-//                .filter(account -> id.equals(account.id()))
-//                .findFirst()
-//                .orElse(null);
+        return accounts
+                .stream()
+                .filter(account -> id.equals(account.id()))
+                .findFirst()
+                .orElse(null);
 
-        for (Account account : accounts) {
-            if (account.id().equals(id)) {
-                return account;
-            }
-        }
-        return null;
+//        for (Account account : accounts) {
+//            if (account.id().equals(id)) {
+//                return account;
+//            }
+//        }
+//       return null;
     }
 
     public void deleteAccount(String id) {
 
-//        accounts
-//                .stream()
-//                .filter(account -> id.equals(account.id()))
-//                .findFirst()
-//                .ifPresent(accounts::remove);
+        accounts
+                .stream()
+                .filter(account -> id.equals(account.id()))
+                .findFirst()
+                .ifPresent(accounts::remove);
 
-        for (Account account : accounts) {
-            if (account.id().equals(id)) {
-                accounts.remove(account);
-                return;
-            }
-        }
+//        for (Account account : accounts) {
+//            if (account.id().equals(id)) {
+//                accounts.remove(account);
+//                return;
+//            }
+//        }
+//
     }
 
     public Integer getNumberOfAccounts() {
         return accounts.size();
+    }
+
+
+    public boolean noRegisteredAccount() {
+        return accounts.isEmpty();
     }
 }

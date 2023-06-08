@@ -71,6 +71,19 @@ public class AccountRepositoryTest {
         Assertions.assertEquals(5, repository.getNumberOfAccounts());
     }
 
+    @Test
+    void successfulGettingRegisteredAccount() {
+        //Setup
+        AccountRepository repository = new AccountRepository();
+        String accountId = repository.createAccount("josh", 89.9);
+
+        //Kick
+        repository.deleteAccount(accountId);
+
+        //Verify
+        Assertions.assertTrue(repository.noRegisteredAccount());
+    }
+
 }
 
 
