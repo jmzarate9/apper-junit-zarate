@@ -21,7 +21,7 @@ public class AccountRepository {
 
         return accounts
                 .stream()
-                .filter(account -> id.equals(account.id()))
+                .filter(account -> id.equals(account.getId()))
                 .findFirst()
                 .orElse(null);
 
@@ -37,7 +37,7 @@ public class AccountRepository {
 
         accounts
                 .stream()
-                .filter(account -> id.equals(account.id()))
+                .filter(account -> id.equals(account.getId()))
                 .findFirst()
                 .ifPresent(accounts::remove);
 

@@ -16,7 +16,7 @@ public class AccountRepositoryTest {
         //Verify
         //this assertions will verify if there is an account inside the accountRepository class and the size inside the class.
         Assertions.assertEquals(1, repository.getNumberOfAccounts());
-        Assertions.assertEquals("josh", repository.getAccount(accountId).name());
+        Assertions.assertEquals("josh", repository.getAccount(accountId).getName());
         Assertions.assertNotNull(accountId);
     }
 
@@ -29,8 +29,8 @@ public class AccountRepositoryTest {
         String accountId = repository.createAccount("josh", 89.9);
 
         //Verify
-        Assertions.assertEquals("josh", repository.getAccount(accountId).name());
-        Assertions.assertEquals(89.9, repository.getAccount(accountId).balance());
+        Assertions.assertEquals("josh", repository.getAccount(accountId).getName());
+        Assertions.assertEquals(89.9, repository.getAccount(accountId).getBalance());
         Assertions.assertEquals(null, repository.getAccount("randomId"));
     }
 
@@ -76,6 +76,10 @@ public class AccountRepositoryTest {
         //Setup
         AccountRepository repository = new AccountRepository();
         String accountId = repository.createAccount("josh", 89.9);
+
+
+        //Verify
+        Assertions.assertFalse(repository.noRegisteredAccount());
 
         //Kick
         repository.deleteAccount(accountId);
