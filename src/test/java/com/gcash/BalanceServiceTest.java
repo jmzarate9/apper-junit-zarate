@@ -10,7 +10,7 @@ public class BalanceServiceTest {
     private BalanceService balanceService = new BalanceService(repository);
 
     @Test
-    void testGetBalance() {
+    void testGetBalance_ShouldReturnAccountBalance() {
         //Setup or given
             // given --> are the initial conditions, the input values
         String accountId = repository.createAccount("John Doe", 10000.0);
@@ -26,7 +26,7 @@ public class BalanceServiceTest {
     }
 
     @Test
-    void testDebit() {
+    void testDebit_ShouldDebitAccount() {
         //Setup or given
         String accountId = repository.createAccount("John Doe", 10000.0);
 
@@ -41,7 +41,7 @@ public class BalanceServiceTest {
     }
 
     @Test
-    void testCredit() {
+    void testCredit_ShouldCreditAccount() {
         //Setup or given
         String accountId = repository.createAccount("John Doe", 10000.0);
 
@@ -56,7 +56,7 @@ public class BalanceServiceTest {
     }
 
     @Test
-    void testTransfer() {
+    void testTransfer_ShouldTransferAmountBetweenAccounts() {
         //Setup or given
         String fromAccount = repository.createAccount("John Doe", 10000.0);
         String toAccount = repository.createAccount("Jane Smith", 5000.0);

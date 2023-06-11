@@ -72,20 +72,22 @@ public class AccountRepositoryTest {
     }
 
     @Test
-    void successfulGettingRegisteredAccount() {
+    void testNoRegisteredAccount_ReturnsTrue_WhenNoAccountIsRegistered() {
+        //Setup
+        AccountRepository repository = new AccountRepository();
+
+        //Verify
+        Assertions.assertTrue(repository.noRegisteredAccount());
+    }
+
+    @Test
+    void testNoRegisteredAccount_ReturnsFalse_ForRegisteredAccount() {
         //Setup
         AccountRepository repository = new AccountRepository();
         String accountId = repository.createAccount("josh", 89.9);
 
-
         //Verify
         Assertions.assertFalse(repository.noRegisteredAccount());
-
-        //Kick
-        repository.deleteAccount(accountId);
-
-        //Verify
-        Assertions.assertTrue(repository.noRegisteredAccount());
     }
 
 }
