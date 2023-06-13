@@ -1,13 +1,29 @@
 package com.gcash;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
 public class BalanceServiceTest {
 
-    private AccountRepository repository = new AccountRepository();
-    private BalanceService balanceService = new BalanceService(repository);
+    //Instance Variable
+    AccountRepository repository;
+    BalanceService balanceService;
+
+    @BeforeEach
+    void setup() {
+        System.out.println("Setting Up...");
+        repository = new AccountRepository();
+        balanceService = new BalanceService(repository);
+    }
+
+    /*@AfterEach
+    void cleanup() {
+        System.out.println("Cleaning Up...");
+//        repository.deleteAllAccount;
+    }*/
 
     @Test
     void testGetBalance_ShouldReturnAccountBalance() {
@@ -25,6 +41,17 @@ public class BalanceServiceTest {
         Assertions.assertEquals(10000.0, balance);
     }
 
+    /*void should_ThrowException() {
+        // Setup
+
+        //Kick
+        Executable executable = () ->
+        //verify
+        assertThrows(ArithmeticException.class, executable);
+
+    }
+    */
+
     @Test
     void testDebit_ShouldDebitAccount() {
         //Setup or given
@@ -39,6 +66,10 @@ public class BalanceServiceTest {
         // Verify
         Assertions.assertEquals(8000.0, balance);
     }
+
+    //testDebitInsufficientBalance()
+
+    //testDebitAccountNotFound
 
     @Test
     void testCredit_ShouldCreditAccount() {

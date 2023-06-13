@@ -13,23 +13,23 @@ public class BalanceService {
     }
 
     public Double getBalance(String id) {
+        // Account account = repository.getAccount(id);
+        //throw an EXCEPTION HERE . "Account Not Found"
+            // -- Create a class method
         return repository.getAccount(id).getBalance();
-
-//        OTHER OPTION
-//        Optional<Account> account = Optional.ofNullable(repository.getAccount(id));
-//        return account.map(Account::getBalance).orElse(null);
+        // return account.getBalance();
     }
 
     public void debit(String id, Double balance) {
         //Subtract
         Account account = repository.getAccount(id);
+        //throw an EXCEPTION HERE . "Account Not Found"
         if (account != null && account.getBalance() >= balance) {
             account.setBalance(account.getBalance() - balance);
-        }
 
-//        OTHER OPTION
-//        Optional<Account> account = Optional.ofNullable(repository.getAccount(id));
-//        account.ifPresent(a -> a.setBalance(a.getBalance() - balance));
+            //throw an EXCEPTION HERE . "Insufficient Balance"
+                // -- Create a class method
+        }
     }
 
     public void credit(String id, Double balance) {
@@ -38,14 +38,12 @@ public class BalanceService {
         if (account != null) {
             account.setBalance(account.getBalance() + balance);
         }
-
-//        OTHER OPTION
-//        Optional<Account> account = Optional.ofNullable(repository.getAccount(id));
-//        account.ifPresent(a -> a.setBalance(a.getBalance() + balance));
     }
 
     public void transfer(String from, String to, Double balance) {
+        //debit
         Account fromAccount = repository.getAccount(from);
+        //credit
         Account toAccount = repository.getAccount(to);
 
         if (fromAccount != null && toAccount != null) {
@@ -54,5 +52,9 @@ public class BalanceService {
                 toAccount.setBalance(toAccount.getBalance() + balance);
             }
         }
+
+        // OTHER OPTION
+            // debit(from, balance);
+            // credit(to, balance);
     }
 }
