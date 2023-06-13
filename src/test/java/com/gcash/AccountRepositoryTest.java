@@ -1,11 +1,13 @@
 package com.gcash;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class AccountRepositoryTest {
 
     @Test
+//    @DisplayName("Creating an Account")
     void successfulAccountCreation() {
         //Setup
         AccountRepository repository = new AccountRepository();
@@ -15,12 +17,13 @@ public class AccountRepositoryTest {
 
         //Verify
         //this assertions will verify if there is an account inside the accountRepository class and the size inside the class.
-        Assertions.assertEquals(1, repository.getNumberOfAccounts());
-        Assertions.assertEquals("josh", repository.getAccount(accountId).getName());
-        Assertions.assertNotNull(accountId);
+        Assertions.assertEquals(1, repository.getNumberOfAccounts(), "There must be one account registered");
+        Assertions.assertEquals("josh", repository.getAccount(accountId).getName(), "The name must be 'josh'");
+        Assertions.assertNotNull(accountId, "There must be an account saved in the database");
     }
 
     @Test
+//    @DisplayName("")
     void successfulGetAccount() {
         //Setup
         AccountRepository repository = new AccountRepository();
@@ -36,6 +39,7 @@ public class AccountRepositoryTest {
 
 
     @Test
+//    @DisplayName("")
     void successfulDeletion() {
         //Setup
         AccountRepository repository  = new AccountRepository();
@@ -50,6 +54,7 @@ public class AccountRepositoryTest {
 
 
     @Test
+//    @DisplayName("")
     void successfulGetNumberOfAccounts() {
         //Setup
         AccountRepository repository = new AccountRepository();
@@ -72,6 +77,7 @@ public class AccountRepositoryTest {
     }
 
     @Test
+//    @DisplayName("")
     void testNoRegisteredAccount_ReturnsTrue_WhenNoAccountIsRegistered() {
         //Setup
         AccountRepository repository = new AccountRepository();
@@ -81,6 +87,7 @@ public class AccountRepositoryTest {
     }
 
     @Test
+//    @DisplayName("")
     void testNoRegisteredAccount_ReturnsFalse_ForRegisteredAccount() {
         //Setup
         AccountRepository repository = new AccountRepository();
